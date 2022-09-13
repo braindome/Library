@@ -1,15 +1,12 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 //Test 11:40
 
 public class Main {
     public static void main(String[] args) {
-        Book book1 = new Book("Nemesis Games", "James S.A. Corey", "2015","Orbit Books, 2022");
-        Book book2 = new Book("The Two Towers", "J.R.R. Tolkien", "1954","60th Anniversary Edition, 2014");
-        Book book3 = new Book("The Winds of Winter", "George R.R. Martin", "2057", "Whatever, 2145");
-
         Scanner sc = new Scanner(System.in);
-        ArrayList<Book> bookList = new ArrayList();
+        ArrayList<Book> bookList = new ArrayList<Book>();
 
 
         System.out.println("Welcome to my library! What would you like to do?");
@@ -22,16 +19,22 @@ public class Main {
         while (true) {
             String choice = String.valueOf(sc.nextLine());
             if (choice.equals("1")) {
+                Book newBook = new Book("", "", "", "", true);
+                newBook.addBook(newBook);
+                bookList.add(newBook);
+                System.out.println(bookList);
 
             } else if (choice.equals("2")) {
+                System.out.println("Insert search string:");
+                String input = sc.nextLine();
+                bookList.search(input);
 
+                System.out.println("Fuck off");
             } else if (choice.equals("3")) {
-
-            } else if (choice.equals("4")) {
-
-            } else if (choice.equals("5")) {
-
+                System.out.println("Available books: ");
             }
+
+            //System.out.println("What would you like to do now?");
         }
 
     }
