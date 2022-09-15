@@ -45,7 +45,7 @@ public class Book {
             }
         }
     }
-    
+
 
     public void availableBooks(ArrayList list) {
         for (Object o : list) {
