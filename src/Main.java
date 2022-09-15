@@ -32,13 +32,31 @@ public class Main {
             if (choice.equals("1")) {
                 Book book = new Book("","","","");
                 book.addBook(book, catalogue);
-                System.out.println("Updated catalogue: " + catalogue);
+                System.out.println("Updated catalogue:");
+                for (Book item : catalogue) {
+                    System.out.println(item);
+                }
 
             } else if (choice.equals("2")) {
                 Book book = new Book("","","","");
                 book.search(catalogue);
 
+            } else if (choice.equals("3")) {
+                System.out.println("Available books:");
+                for (Book book : catalogue) {
+                    if (book.status) {
+                        System.out.println(book);
+                    }
+                }
+            } else if (choice.equals("4")) {
+                Book book = new Book("","","","");
+                book.returnBook();
+                System.out.println("You have returned the book.");
+            } else if (choice.equals("5")) {
+                System.out.println("Good bye!");
+                break;
             }
+            System.out.println("What would you like to do now?");
 
         }
 

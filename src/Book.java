@@ -81,6 +81,4 @@ public class Book {
         return this.title + ". " + this.author + ", " + this.year + ". " + this.edition;
     }
 
-
-
 }
