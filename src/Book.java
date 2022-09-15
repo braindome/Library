@@ -36,30 +36,40 @@ public class Book {
     public void search (ArrayList list) {
         System.out.println("Enter search string:");
         String searchTerm = sc.nextLine();
-        for (Object o : list) {
-            if (o.toString().contains(searchTerm)) {
-                System.out.println("The book is in catalogue.");
-            } else {
-                System.out.println("No result");
-                break;
+        for (int i = 0; i < list.size(); i++) {
+            String string = list.get(i).toString();
+            String bookTitle = this.title;
+            if (string.contains(searchTerm)) {
+                System.out.println(list.get(i) + " is in catalogue. Would you like to loan the book? y/n");
+                String answer = sc.nextLine();
+                if (answer.equals("y")) {
+                    loan(this);
+                    System.out.println(this.status);
+                }
             }
         }
     }
 
+    public String getTitle() {
+        return title;
+    }
 
-    public void availableBooks(ArrayList list) {
-        for (Object o : list) {
-            if (this.status) {
+    /*public void availableBooks(ArrayList list) {
+        for (Book b : list) {
+            if (b.status) {
                 System.out.println(list);
             }
         }
-    }
+    }*/
 
+    public boolean isStatus() {
+        return status;
+    }
 
     public void loan(Book book) {
         if (this.status) {
-            status = false;
             System.out.println("The book is available");
+            status = false;
         } else {
             System.out.println("The book is NOT available");
         }

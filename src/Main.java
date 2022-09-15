@@ -29,8 +29,8 @@ public class Main {
 
         while (true) {
             String choice = sc.nextLine();
+            Book book = new Book("","","","");
             if (choice.equals("1")) {
-                Book book = new Book("","","","");
                 book.addBook(book, catalogue);
                 System.out.println("Updated catalogue:");
                 for (Book item : catalogue) {
@@ -38,18 +38,17 @@ public class Main {
                 }
 
             } else if (choice.equals("2")) {
-                Book book = new Book("","","","");
                 book.search(catalogue);
+
 
             } else if (choice.equals("3")) {
                 System.out.println("Available books:");
-                for (Book book : catalogue) {
-                    if (book.status) {
-                        System.out.println(book);
+                for (Book b : catalogue) {
+                    if (b.status) {
+                        System.out.println(b);
                     }
                 }
             } else if (choice.equals("4")) {
-                Book book = new Book("","","","");
                 book.returnBook();
                 System.out.println("You have returned the book.");
             } else if (choice.equals("5")) {
