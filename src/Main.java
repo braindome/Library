@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-//Test 11:40
 
 public class Main {
     public static void main(String[] args) {
@@ -9,30 +8,41 @@ public class Main {
         Book book3 = new Book("The Winds of Winter", "George R.R. Martin", "2057", "Whatever, 2145");
 
         Scanner sc = new Scanner(System.in);
-        ArrayList<Book> bookList = new ArrayList();
+        ArrayList<Book> catalogue = new ArrayList<>();
 
+        catalogue.add(book1);
+        catalogue.add(book2);
+        catalogue.add(book3);
+
+        for (int i = 0; i <= catalogue.size()-1; i++) {
+            System.out.println(catalogue.get(i));
+        }
 
         System.out.println("Welcome to my library! What would you like to do?");
         System.out.println("1. Add a book to the library.");
-        System.out.println("2. Search for a book by name.");
+        System.out.println("2. Search for a book.");
         System.out.println("3. List all available books.");
         System.out.println("4. Return a book.");
         System.out.println("5. Quit program.");
 
+
         while (true) {
-            String choice = String.valueOf(sc.nextLine());
+            String choice = sc.nextLine();
             if (choice.equals("1")) {
+                Book book = new Book("","","","");
+                book.addBook(book, catalogue);
+                System.out.println("Updated catalogue: " + catalogue);
 
             } else if (choice.equals("2")) {
-
-            } else if (choice.equals("3")) {
-
-            } else if (choice.equals("4")) {
-
-            } else if (choice.equals("5")) {
+                Book book = new Book("cazzo","","","");
+                book.search(catalogue);
 
             }
+
         }
 
+
     }
+
+
 }
