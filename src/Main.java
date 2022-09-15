@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+//Test 02:33
 
 public class Main {
     public static void main(String[] args) {
@@ -34,7 +35,7 @@ public class Main {
                 System.out.println("Updated catalogue: " + catalogue);
 
             } else if (choice.equals("2")) {
-                Book book = new Book("cazzo","","","");
+                Book book = new Book("","","","");
                 book.search(catalogue);
 
             }
