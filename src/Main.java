@@ -36,18 +36,12 @@ public class Main {
                 for (Book item : catalogue) {
                     System.out.println(item);
                 }
-
             } else if (choice.equals("2")) {
                 book.search(catalogue);
-
-
             } else if (choice.equals("3")) {
                 System.out.println("Available books:");
-                for (Book b : catalogue) {
-                    if (b.status) {
-                        System.out.println(b);
-                    }
-                }
+                book.availableBooks(catalogue);
+
             } else if (choice.equals("4")) {
                 book.returnBook();
                 System.out.println("You have returned the book.");

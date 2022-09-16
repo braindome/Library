@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public class Book {
     boolean status;
 
     Scanner sc = new Scanner(System.in);
+    ArrayList<Book> bookList = new ArrayList<>();
 
     //Constructor method - add a book
     public Book(String title, String author, String year, String edition) {
@@ -38,7 +40,6 @@ public class Book {
         String searchTerm = sc.nextLine();
         for (int i = 0; i < list.size(); i++) {
             String string = list.get(i).toString();
-            String bookTitle = this.title;
             if (string.contains(searchTerm)) {
                 System.out.println(list.get(i) + " is in catalogue. Would you like to loan the book? y/n");
                 String answer = sc.nextLine();
@@ -50,28 +51,22 @@ public class Book {
         }
     }
 
-    public String getTitle() {
-        return title;
-    }
 
-    /*public void availableBooks(ArrayList list) {
-        for (Book b : list) {
-            if (b.status) {
-                System.out.println(list);
+    public void availableBooks(ArrayList<Book> list) {
+        for (Book book : list) {
+            if (book.status) {
+                System.out.println(book);
             }
         }
-    }*/
-
-    public boolean isStatus() {
-        return status;
     }
+
 
     public void loan(Book book) {
         if (this.status) {
-            System.out.println("The book is available");
             status = false;
+            System.out.println("You have loaned the book.");
         } else {
-            System.out.println("The book is NOT available");
+            System.out.println("The book is NOT available.");
         }
     }
 
