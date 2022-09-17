@@ -7,102 +7,82 @@ public class Book {
     String year;
     String edition;
     boolean status;
-    ArrayList<Book> bookList = new ArrayList();
-    Scanner sc = new Scanner(System.in);
 
-    //Constructor
-    public Book(String title, String author, String year, String edition, boolean status) {
+    Scanner sc = new Scanner(System.in);
+    ArrayList<Book> bookList = new ArrayList<>();
+
+    //Constructor method - add a book
+    public Book(String title, String author, String year, String edition) {
         this.title = title;
         this.author = author;
         this.year = year;
         this.edition = edition;
         this.status = true;
+
     }
 
-    public void addBook(Book id) {
-        bookList.add(id);
+    public Book addBook (Book book, ArrayList list) {
+        list.add(book);
         System.out.println("Insert book title:");
-        setTitle(sc.nextLine());
-        System.out.println("Insert author name:");
-        setAuthor(sc.nextLine());
-        System.out.println("Insert publication year:");
-        setYear(sc.nextLine());
+        this.title = sc.nextLine();
+        System.out.println("Insert book author:");
+        this.author = sc.nextLine();
+        System.out.println("Insert publishing year:");
+        this.year = sc.nextLine();
         System.out.println("Insert publisher details:");
-        setEdition(sc.nextLine());
-
+        this.edition = sc.nextLine();
+        return book;
     }
 
-    public void search(String input) {
-        for (Book book : bookList) {
-            if (bookList.contains(input)) {
-                System.out.println("The requested title is in the library and available.");
-            } else {
-                System.out.println("The book is not available or not in catalogue.");
+    public void search (ArrayList list) {
+        System.out.println("Enter search string:");
+        String searchTerm = sc.nextLine();
+        for (int i = 0; i < list.size(); i++) {
+            String string = list.get(i).toString();
+            if (string.contains(searchTerm)) {
+                System.out.println(list.get(i) + " is in catalogue. Would you like to loan the book? y/n");
+                String answer = sc.nextLine();
+                if (answer.equals("y")) {
+                    loan(this);
+                    System.out.println(this.status);
+                }
             }
         }
-
     }
 
-    public String getTitle() {
-        return title;
+
+    public void availableBooks(ArrayList<Book> list) {
+        for (Book book : list) {
+            if (book.status) {
+                System.out.println(book);
+            }
+        }
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public String getEdition() {
-        return edition;
-    }
-
-    public void setEdition(String edition) {
-        this.edition = edition;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public boolean loan() {
-        if (status) {
-            this.status = false;
-            return true;
+    public void loan(Book book) {
+        if (this.status) {
+            status = false;
+            System.out.println("You have loaned the book.");
         } else {
-            return false;
+            System.out.println("The book is NOT available.");
         }
     }
 
     public boolean returnBook() {
-        if (!status) {
-            this.status = true;
-            return false;
-        } else {
+        if (!this.status) {
+            status = true;
+            System.out.println("You have returned the book");
             return true;
+        } else {
+            System.out.println("You still have the book");
+            return false;
         }
 
     }
 
     public String toString() {
-        return author + ". " + title + ". " + year + ". " + edition + ".";
+        return this.title + ". " + this.author + ", " + this.year + ". " + this.edition;
     }
+
 }
