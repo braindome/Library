@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import java.lang.reflect.Array;
+>>>>>>> refs/remotes/origin/main
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -85,4 +89,8 @@ public class Book {
         return this.title + ". " + this.author + ", " + this.year + ". " + this.edition;
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/remotes/origin/main
